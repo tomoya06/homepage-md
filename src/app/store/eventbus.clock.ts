@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { setStorage, getStorage } from '../../../util/index';
+import { setStorage, getStorage } from '../../util/index';
 
 const clock = new EventEmitter();
 

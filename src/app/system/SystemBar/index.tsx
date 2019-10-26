@@ -5,7 +5,7 @@ import {
   Button,
 } from '@material-ui/core'
 
-import SystemBarClock from '../../systembar/clock';
+import SystemBarClock from '../../systembar/Clock';
 
 import './index.scss';
 

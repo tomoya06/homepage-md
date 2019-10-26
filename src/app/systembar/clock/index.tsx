@@ -2,7 +2,7 @@ import React from 'react';
 import ReactClock from 'react-clock';
 
 import {
-  Popover, Button, 
+  Button, AppBar, Toolbar, Typography
 } from '@material-ui/core'
 
 import './index.scss';
@@ -11,13 +11,14 @@ import moment from 'moment';
 import {
   TimezoneItem, getTimezoneList,
   bindTimezoneListUpdateHandler, unbindTimezoneListUpdateHandler
-} from './eventbus';
+} from '../../store/eventbus.clock';
+
+import Application from '../SystemBarApplication/index';
 
 type State = {
   timeFormat: string,
   currentTime: moment.Moment,
   timezoneList: TimezoneItem[],
-  anchorEl: HTMLButtonElement | null,
 }
 
 export default class Clock extends React.Component<{}, State> {
@@ -25,7 +26,6 @@ export default class Clock extends React.Component<{}, State> {
     timeFormat: 'HH:mm:ss',
     currentTime: moment(),
     timezoneList: getTimezoneList() || [],
-    anchorEl: null,
   }
 
   timeout: number = 0;
@@ -57,31 +57,22 @@ export default class Clock extends React.Component<{}, State> {
     });
   }
 
-  handleTriggerClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    this.setState({
-      anchorEl: event.currentTarget,
-    })
-  }
-
-  handleTriggerClose = () => {
-    this.setState({
-      anchorEl: null,
-    })
-  }
-  
   handleClickSetting = () => {
     // window.launchApp('system.clocksetting');
   }
 
   render() {
-    const { currentTime, timeFormat, timezoneList, anchorEl } = this.state;
-    const open = Boolean(anchorEl);
-    const id = open ? this.anchorElemId : undefined;
+    const { currentTime, timeFormat, timezoneList } = this.state;
     const trigger = (
       <span>{currentTime.format(timeFormat)}</span>
     );
     const popover = (
       <div className="clock-popover">
+        <AppBar position="static">
+          <Toolbar variant="dense">
+            <Typography>Clock</Typography>
+          </Toolbar>
+        </AppBar>
         <div className="clock-display">
           <div className="one-clock">
             <ReactClock value={currentTime.toDate()} />
@@ -106,27 +97,11 @@ export default class Clock extends React.Component<{}, State> {
       </div>
     );
     return (
-      <React.Fragment>
-        <Button aria-describedby={id} variant="contained" onClick={this.handleTriggerClick}>
-          {trigger}
-        </Button>
-        <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={this.handleTriggerClose}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'left',
-          }}
-          transformOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-        >
-          {popover}
-        </Popover>
-      </React.Fragment>
+      <Application 
+        trigger={trigger}
+        popover={popover}
+        anchorElemId="clock-appbar"
+      />
     )
   }
 }
