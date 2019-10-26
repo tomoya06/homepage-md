@@ -5,7 +5,7 @@ import _ from 'lodash';
 import RunningApp from '../model/RunningApp';
 import App from '../model/App';
 
-import systemEvt from './SystemEventBus';
+import systemEvt from './SystemEventbus';
 
 class SystemStore {
   pidCnt: number = 0;

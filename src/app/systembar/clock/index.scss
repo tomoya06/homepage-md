@@ -1,0 +1,18 @@
+.clock-popover {
+  .clock-display {
+    display: flex;
+    .one-clock {
+      margin: 6px 6px;
+      text-align: center;
+
+      .desc {
+        padding: 6px 0 0 0;
+      }
+    }
+  }
+  .panel {
+    margin: .6rem 0 0 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

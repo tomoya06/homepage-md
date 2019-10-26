@@ -5,14 +5,16 @@ import {
   Button,
 } from '@material-ui/core'
 
+import SystemBarClock from '../../systembar/clock';
+
 import './index.scss';
 
-type SystemBarState = {
+type State = {
   isDrawerOpen: boolean;
 }
 
-export default class SystemBar extends React.Component<{}, SystemBarState> {
-  state: Readonly<SystemBarState> = {
+export default class SystemBar extends React.Component<{}, State> {
+  state: Readonly<State> = {
     isDrawerOpen: false,
   }
 
@@ -22,6 +24,7 @@ export default class SystemBar extends React.Component<{}, SystemBarState> {
         <AppBar position="fixed" className="systembar">
           <Toolbar variant="dense">
             <Button>START</Button>
+            <SystemBarClock/>
           </Toolbar>
         </AppBar>
         {

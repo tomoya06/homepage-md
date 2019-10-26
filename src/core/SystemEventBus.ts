@@ -2,9 +2,9 @@ import { EventEmitter } from 'events';
 
 declare global {
   interface Window { 
-    launchApp: Function;
-    terminateApp: Function;
-    killApp: Function;
+    launchApp: (appid: string) => void;
+    terminateApp: (appid: string) => void;
+    killApp: (pid: number) => void;
   }
 }
 
