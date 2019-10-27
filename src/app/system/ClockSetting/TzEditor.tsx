@@ -4,6 +4,10 @@ import {
   Select, MenuItem,
   List, ListItem, ListItemSecondaryAction, ListItemText,
 } from '@material-ui/core';
+import {
+  Delete as DeleteIcon,
+} from '@material-ui/icons';
+
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import './index.scss';
 
@@ -89,7 +93,7 @@ class TzEditor extends React.Component<Props, State> {
         <ListItemText primary={value.label}></ListItemText>
         <ListItemSecondaryAction>
           <IconButton>
-            <Icon>delete</Icon>
+            <DeleteIcon />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>

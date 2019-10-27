@@ -1,8 +1,13 @@
 import React from 'react';
 import {
-  Button, ButtonGroup, Icon,
+  ButtonGroup, IconButton,
+  Paper,
   AppBar, Toolbar
 } from '@material-ui/core';
+import {
+  Close as CloseIcon,
+} from '@material-ui/icons';
+
 import { Rnd, ResizeEnable } from 'react-rnd';
 
 type Props = {
@@ -37,7 +42,7 @@ export default class Application extends React.Component<Props, {}> {
         dragHandleClassName="window--header"
         enableResizing={enableResizing}
       >
-        <div
+        <Paper
           style={{
             width: '100%',
             height: '100%',
@@ -45,21 +50,23 @@ export default class Application extends React.Component<Props, {}> {
             flexDirection: 'column',
           }}
         >
-          <div
-            className="window--header"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            {header}
-            <ButtonGroup>
-              <Button onClick={this.handleCloseApp}>
-                <Icon>close</Icon>
-              </Button>
-            </ButtonGroup>
-          </div>
+          <AppBar className="window--header" position="static">
+            <Toolbar 
+              variant="dense"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
+            >
+              {header}
+              <ButtonGroup>
+                <IconButton onClick={this.handleCloseApp}>
+                  <CloseIcon />
+                </IconButton>
+              </ButtonGroup>
+            </Toolbar>
+          </AppBar>
           <div
             className={contentClassName}
             style={{
@@ -69,7 +76,7 @@ export default class Application extends React.Component<Props, {}> {
           >
             {content}
           </div>
-        </div>
+        </Paper>
       </Rnd>
     );
   }
