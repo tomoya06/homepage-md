@@ -1,15 +1,14 @@
-import { AppCatalog } from "./AppCatalog";
+type ComponentClass = new(...args: any[]) => React.Component<any, any>;
 
-export default class App {
+export enum APP_CATALOG {
+  APP = 'APPS',
+  SETTING = 'SETTINGS',
+  ABOUT = 'ABOUT',
+}
+
+export default interface App {
   id: string;
-  app: React.Component;
-  catalog: AppCatalog;
+  app: ComponentClass;
+  catalog: APP_CATALOG;
   name: string;
-
-  constructor(id: string, app: React.Component, catalog: AppCatalog, name: string) {
-    this.id = id;
-    this.app = app;
-    this.catalog = catalog;
-    this.name = name;
-  }
 }

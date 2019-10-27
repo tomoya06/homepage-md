@@ -1,0 +1,19 @@
+.tz-editor {
+  min-height: 200px;
+  
+  .tz-add {
+    display: flex;
+    width: 480px;
+    justify-content: space-between;
+  }
+}
+
+.timezone-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .label {
+    cursor: move;
+  }
+}
