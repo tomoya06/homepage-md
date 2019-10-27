@@ -1,11 +1,10 @@
 import React from 'react';
 import {
-  Button, IconButton, Icon,
+  IconButton, Icon,
   Select, MenuItem,
-  List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText,
+  List, ListItem, ListItemSecondaryAction, ListItemText,
 } from '@material-ui/core';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
-import _ from 'lodash';
 import './index.scss';
 
 import { triggerTimezoneListUpdate, getTimezoneList, updateTimezoneList, TimezoneItem } from '../../store/eventbus.clock';
@@ -113,7 +112,7 @@ class TzEditor extends React.Component<Props, State> {
             >
               {
                 timezoneSelections.map((selection) => (
-                  <MenuItem value={selection.value}>{selection.label}</MenuItem>
+                  <MenuItem key={selection.value} value={selection.value}>{selection.label}</MenuItem>
                 ))
               }
             </Select>

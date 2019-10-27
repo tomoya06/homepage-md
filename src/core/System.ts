@@ -1,4 +1,3 @@
-import React from 'react';
 import { observable, autorun, computed } from 'mobx';
 import _ from 'lodash';
 
@@ -6,8 +5,9 @@ import RunningApp from '../model/RunningApp';
 import App from '../model/App';
 
 import systemEvt from './SystemEventbus';
+import registry from './registry';
 
-class SystemStore {
+export class SystemStore {
   pidCnt: number = 0;
 
   @observable
@@ -40,24 +40,31 @@ class SystemStore {
     return pid;
   }
 
-  terminateApp(pid: number) {
-    const targetApp = _.remove(this.runningApps, (app) => app.pid === pid);
-    return targetApp.map((app) => app.pid);
+  terminateAppByAppid(appid: string) {
+    const [targetApp] = _.remove(this.runningApps, (app) => app.app.id === appid);
+    return targetApp ? targetApp.pid : -1;
+  }
+
+  terminateAppByPid(pid: number) {
+    const [targetApp] = _.remove(this.runningApps, (app) => app.pid === pid);
+    return targetApp ? targetApp.pid : -1;
   }
 }
 
 const systemStore = new SystemStore();
 
-systemEvt.on('launch', (appid) => {
-  // TODO: 
+systemEvt.on('launch', (appid: string) => {
+  const targetApp = registry.find((reg) => reg.id === appid);
+  const pid = targetApp ? systemStore.launchApp(targetApp) : -1;
+  return pid;
 });
 
-systemEvt.on('terminate', (appid) => {
-  // TODO: 
+systemEvt.on('terminate', (appid: string) => {
+  return systemStore.terminateAppByAppid(appid);
 });
 
-systemEvt.on('kill', (pid) => {
-  // TODO:
+systemEvt.on('kill', (pid: number) => {
+  return systemStore.terminateAppByPid(pid);
 });
 
 export default systemStore;

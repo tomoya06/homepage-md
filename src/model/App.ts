@@ -8,7 +8,7 @@ export enum APP_CATALOG {
 
 export default interface App {
   id: string;
-  app: ComponentClass;
+  app: JSX.Element;
   catalog: APP_CATALOG;
   name: string;
 }
