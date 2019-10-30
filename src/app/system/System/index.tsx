@@ -25,7 +25,7 @@ class System extends React.Component<Props, {}> {
             </React.Fragment>
           ))}
         </div>
-        <SystemBar />
+        <SystemBar store={store} />
       </div>
     )
   }

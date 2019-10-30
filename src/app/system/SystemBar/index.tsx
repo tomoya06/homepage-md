@@ -7,23 +7,37 @@ import {
 
 import SystemBarClock from '../../systembar/Clock';
 
+import { observer } from 'mobx-react';
+
 import './index.scss';
+import { SystemStore } from '../../../core/System';
 
 type State = {
-  isDrawerOpen: boolean;
+  isDrawerOpen: boolean,
 }
 
-export default class SystemBar extends React.Component<{}, State> {
+type Props = {
+  store: SystemStore,
+}
+
+@observer
+export default class SystemBar extends React.Component<Props, State> {
   state: Readonly<State> = {
     isDrawerOpen: false,
   }
 
   render() {
+    const { store } = this.props;
+    const { runningApps } = store;
+    
     return (
       <div className="systembar-container">
         <AppBar position="fixed" className="systembar">
           <Toolbar variant="dense">
             <Button>START</Button>
+            {runningApps.map((app) => (
+              <Button>{app.displayName}</Button>
+            ))}
             <SystemBarClock/>
           </Toolbar>
         </AppBar>
