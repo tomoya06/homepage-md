@@ -1,14 +1,20 @@
 import React from 'react';
 import {
-  IconButton, Icon,
-  Select, MenuItem,
-  List, ListItem, ListItemSecondaryAction, ListItemText,
+  Grid, Box,
+  IconButton, Icon, Button,
+  Divider,
+  Typography,
+  Select, MenuItem, FormControl,
+  List, ListItem, ListItemSecondaryAction, ListItemText, ListItemIcon,
 } from '@material-ui/core';
 import {
   Delete as DeleteIcon,
+  Add as AddIcon,
+  Menu as MenuIcon,
+  DragHandle as DragHandleIcon,
 } from '@material-ui/icons';
 
-import { SortableContainer, SortableElement } from 'react-sortable-hoc';
+import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import './index.scss';
 
 import { triggerTimezoneListUpdate, getTimezoneList, updateTimezoneList, TimezoneItem } from '../../store/eventbus.clock';
@@ -63,6 +69,7 @@ class TzEditor extends React.Component<Props, State> {
   submitAddTz = () => {
     const { timezoneSelections, selectedTimezone, timezoneList } = this.state;
     const newTimezone = timezoneSelections.find((zone) => zone.value === selectedTimezone);
+    if (newTimezone && timezoneList.findIndex((timezone) => timezone.value === newTimezone.value) >= 0) return;
     // const newTimezoneList = [...timezoneList, newTimezone];
     newTimezone && timezoneList.push(newTimezone);
     updateTimezoneList(timezoneList);
@@ -84,47 +91,78 @@ class TzEditor extends React.Component<Props, State> {
   }
 
   render() {
-    const { 
+    const {
       timezoneSelections, timezoneList,
-      selectedTimezone 
+      selectedTimezone
     } = this.state;
+
+    const DragHandle = SortableHandle(() => <DragHandleIcon className="drag-handle" />);
+
     const SortableItem = SortableElement(({ value }: { value: TimezoneItem }) => (
-      <ListItem>
+      <ListItem ContainerComponent="div">
+        <ListItemIcon>
+          <DragHandle />
+        </ListItemIcon>
         <ListItemText primary={value.label}></ListItemText>
         <ListItemSecondaryAction>
-          <IconButton>
+          <IconButton onClick={() => this.handleDelete(value.value)}>
             <DeleteIcon />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
     ));
     const SortableList = SortableContainer(({ items }: { items: TimezoneItem[] }) => (
-      <List>
-        {items && items.map((item, index) => (
-          <SortableItem key={`item-${item.value}`} index={index} value={item} />
-        ))
+      <List component="div">
+        {
+          items && items.map((item, index) => (
+            <SortableItem key={`item-${item.value}`} index={index} value={item} />
+          ))
         }
       </List>
     ));
     return (
       <div className="tz-editor">
-        <div>
-          <div className="tz-add" >
-            <Select
-              value={selectedTimezone}
-              onChange={this.handleSelectChange}
-            >
-              {
-                timezoneSelections.map((selection) => (
-                  <MenuItem key={selection.value} value={selection.value}>{selection.label}</MenuItem>
-                ))
-              }
-            </Select>
-          </div>
-        </div>
-        <div>
-          <SortableList items={timezoneList} onSortEnd={this.onSortEnd} distance={2} />
-        </div>
+        <Grid container spacing={1}>
+          <Typography variant="subtitle1" gutterBottom={true}>
+            <Box component="span">Timezones </Box>
+            <Box component="span" color={
+              timezoneList.length >= MAX_TIMEZONE_COUNT ? 'secondary.main' : 'text.secondary'
+            }>{timezoneList.length}/{MAX_TIMEZONE_COUNT}</Box>
+          </Typography>
+        </Grid>
+        <Divider />
+        <Grid container spacing={1}>
+          <Grid item sm={12}>
+            <SortableList
+              items={timezoneList}
+              onSortEnd={this.onSortEnd}
+              useDragHandle={true}
+              lockAxis="y"
+            />
+          </Grid>
+        </Grid>
+        <Grid container spacing={1} justify="space-between" >
+          <Grid item sm={12}>
+            <FormControl fullWidth={true} variant="outlined">
+              <Select
+                value={selectedTimezone}
+                onChange={this.handleSelectChange}
+              >
+                {
+                  timezoneSelections.map((selection) => (
+                    <MenuItem key={selection.value} value={selection.value}>{selection.label}</MenuItem>
+                  ))
+                }
+              </Select>
+            </FormControl>
+          </Grid>
+          <Divider />
+          <Grid item sm={12}>
+            <Button variant="outlined" fullWidth={true} onClick={() => this.submitAddTz()}>
+              <span>ADD</span>
+            </Button>
+          </Grid>
+        </Grid>
       </div>
     );
   }

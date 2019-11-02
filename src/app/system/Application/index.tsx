@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   ButtonGroup, IconButton,
+  Typography,
   Paper,
   AppBar, Toolbar
 } from '@material-ui/core';
@@ -14,7 +15,7 @@ import {
 import { Rnd, ResizeEnable } from 'react-rnd';
 
 type Props = {
-  header: JSX.Element | string,
+  header: string,
   content: JSX.Element,
   appid: string,
   contentClassName?: string,
@@ -48,8 +49,8 @@ class Application extends React.Component<Props, {}> {
         default={{
           x: 0,
           y: 0,
-          width: width || '',
-          height: height || '',
+          width: width || 'auto',
+          height: height || 'auto',
         }}
         dragHandleClassName="window--header"
         enableResizing={enableResizing}
@@ -73,7 +74,9 @@ class Application extends React.Component<Props, {}> {
                 padding: '0 0 0 1rem'
               }}
             >
-              {header}
+              <Typography variant="subtitle1">
+                {header}
+              </Typography>
               <span>
                 <IconButton onClick={this.handleCloseApp}>
                   <CloseIcon className={classes.customIconButton} />

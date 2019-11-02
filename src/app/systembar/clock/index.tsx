@@ -2,7 +2,8 @@ import React from 'react';
 import ReactClock from 'react-clock';
 
 import {
-  Button, AppBar, Toolbar, Typography
+  Button, 
+  Divider,
 } from '@material-ui/core'
 
 import './index.scss';
@@ -58,7 +59,7 @@ export default class Clock extends React.Component<{}, State> {
   }
 
   handleClickSetting = () => {
-    // window.launchApp('system.clocksetting');
+    window.launchApp('system.clocksetting');
   }
 
   render() {
@@ -68,11 +69,6 @@ export default class Clock extends React.Component<{}, State> {
     );
     const popover = (
       <div className="clock-popover">
-        <AppBar position="static">
-          <Toolbar variant="dense">
-            <Typography>Clock</Typography>
-          </Toolbar>
-        </AppBar>
         <div className="clock-display">
           <div className="one-clock">
             <ReactClock value={currentTime.toDate()} />
@@ -90,9 +86,9 @@ export default class Clock extends React.Component<{}, State> {
             ))
           }
         </div>
+        <Divider />
         <div className="panel">
           <Button onClick={this.handleClickSetting}>SETTING</Button>
-          {/* <Button onClick={this.handleTriggerClose}>X</Button> */}
         </div>
       </div>
     );

@@ -2,6 +2,8 @@ import React from 'react';
 
 import { observer } from 'mobx-react';
 
+import { CssBaseline } from '@material-ui/core';
+
 import SystemBar from '../SystemBar';
 import './index.scss';
 import { SystemStore } from '../../../core/System';
@@ -12,12 +14,18 @@ type Props = {
 
 @observer
 class System extends React.Component<Props, {}> {
+
+  componentDidMount() {
+    window.launchApp('system.clocksetting');
+  }
+
   render() {
     const { store } = this.props;
     const { runningApps } = store;
 
     return (
       <div className="system-container">
+        <CssBaseline />
         <div className="desktop-container">
           {runningApps.map((app) => (
             <React.Fragment key={'pid-'+app.pid}>

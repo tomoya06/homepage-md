@@ -29,6 +29,7 @@ const unbindTimezoneListUpdateHandler = (func: (...args: any[]) => void) => {
 
 const updateTimezoneList: (arg: TimezoneItem[]) => void
   = (timezoneList: TimezoneItem[]) => setStorage(CONSTANT.TIMEZONELIST, timezoneList);
+
 const getTimezoneList: () => TimezoneItem[]
   = () => getStorage(CONSTANT.TIMEZONELIST);
 

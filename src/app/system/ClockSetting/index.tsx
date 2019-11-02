@@ -9,9 +9,7 @@ export default class ClockSetting extends React.Component implements IApplicatio
   appid = 'system.clocksetting';
   
   render() {
-    const header = (
-      <span>Clock Setting</span>
-    );
+    const header = 'Clock Setting';
     const content = (
       <TzEditor />
     );
