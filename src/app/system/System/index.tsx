@@ -14,11 +14,6 @@ type Props = {
 
 @observer
 class System extends React.Component<Props, {}> {
-
-  componentDidMount() {
-    window.launchApp('system.clocksetting');
-  }
-
   render() {
     const { store } = this.props;
     const { runningApps } = store;
