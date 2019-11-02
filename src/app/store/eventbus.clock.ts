@@ -11,7 +11,8 @@ const CONSTANT = {
 export type TimezoneItem = {
   label: string,
   value: string,
-  lag: number,
+  locale: string,
+  lag: string,
 }
 
 const triggerTimezoneListUpdate = () => {

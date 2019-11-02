@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Grid, Box,
-  IconButton, Icon, Button,
+  IconButton, Button,
   Divider,
   Typography,
   Select, MenuItem, FormControl,
@@ -9,8 +9,6 @@ import {
 } from '@material-ui/core';
 import {
   Delete as DeleteIcon,
-  Add as AddIcon,
-  Menu as MenuIcon,
   DragHandle as DragHandleIcon,
 } from '@material-ui/icons';
 
@@ -21,13 +19,14 @@ import { triggerTimezoneListUpdate, getTimezoneList, updateTimezoneList, Timezon
 
 import allTimezones from './timezones.json';
 
-const mappedTimezones: TimezoneItem[] = allTimezones.map((key) => ({
-  label: key,
-  value: key,
-  lag: parseInt(key.replace(/^\(GMT([-+]\d{2}).*$/, '$1'), 10),
+const mappedTimezones: TimezoneItem[] = allTimezones.map(({ locale, lag }: { locale: string, lag: string }) => ({
+  label: `${locale.replace('_', ' ')}`,
+  value: locale,
+  locale: locale,
+  lag: lag,
 }));
 
-const currentTimezoneIdx = mappedTimezones.findIndex((zone) => zone.value === '(GMT+08:00) Asia/Taipei');
+const currentTimezoneIdx = mappedTimezones.findIndex((zone) => zone.value === 'Asia/Taipei');
 
 const MAX_TIMEZONE_COUNT = 5;
 

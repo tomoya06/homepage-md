@@ -1,85 +1,334 @@
 [
-  "(GMT-11:00) Pacific/Pago_Pago",
-  "(GMT-10:00) Pacific/Honolulu",
-  "(GMT-08:00) America/Los_Angeles",
-  "(GMT-07:00) America/Denver",
-  "(GMT-06:00) America/Chicago",
-  "(GMT-06:00) America/Guatemala",
-  "(GMT-05:00) America/Bogota",
-  "(GMT-05:00) America/New_York",
-  "(GMT-05:00) America/Lima",
-  "(GMT-04:30) America/Caracas",
-  "(GMT-04:00) America/Guyana",
-  "(GMT-04:00) America/La_Paz",
-  "(GMT-03:00) America/Argentina/Buenos_Aires",
-  "(GMT-03:00) America/Godthab",
-  "(GMT-03:00) America/Montevideo",
-  "(GMT-03:00) America/Santiago",
-  "(GMT-02:00) America/Sao_Paulo",
-  "(GMT-02:00) Atlantic/South_Georgia",
-  "(GMT-01:00) Atlantic/Azores",
-  "(GMT-01:00) Atlantic/Cape_Verde",
-  "(GMT+00:00) Africa/Casablanca",
-  "(GMT+00:00) Europe/Dublin",
-  "(GMT+00:00) Europe/Lisbon",
-  "(GMT+00:00) Europe/London",
-  "(GMT+00:00) Africa/Monrovia",
-  "(GMT+01:00) Africa/Algiers",
-  "(GMT+01:00) Europe/Amsterdam",
-  "(GMT+01:00) Europe/Berlin",
-  "(GMT+01:00) Europe/Brussels",
-  "(GMT+01:00) Europe/Budapest",
-  "(GMT+01:00) Europe/Copenhagen",
-  "(GMT+01:00) Europe/Madrid",
-  "(GMT+01:00) Europe/Paris",
-  "(GMT+01:00) Europe/Rome",
-  "(GMT+01:00) Europe/Stockholm",
-  "(GMT+01:00) Europe/Vienna",
-  "(GMT+01:00) Europe/Warsaw",
-  "(GMT+02:00) Europe/Athens",
-  "(GMT+02:00) Europe/Bucharest",
-  "(GMT+02:00) Africa/Cairo",
-  "(GMT+02:00) Asia/Jerusalem",
-  "(GMT+02:00) Africa/Johannesburg",
-  "(GMT+02:00) Europe/Helsinki",
-  "(GMT+02:00) Europe/Kiev",
-  "(GMT+02:00) Europe/Riga",
-  "(GMT+02:00) Europe/Sofia",
-  "(GMT+02:00) Europe/Tallinn",
-  "(GMT+02:00) Europe/Vilnius",
-  "(GMT+03:00) Europe/Istanbul",
-  "(GMT+03:00) Asia/Baghdad",
-  "(GMT+03:00) Africa/Nairobi",
-  "(GMT+03:00) Europe/Minsk",
-  "(GMT+03:00) Asia/Riyadh",
-  "(GMT+03:30) Asia/Tehran",
-  "(GMT+04:00) Asia/Baku",
-  "(GMT+04:00) Asia/Tbilisi",
-  "(GMT+04:00) Asia/Yerevan",
-  "(GMT+04:30) Asia/Kabul",
-  "(GMT+05:00) Asia/Karachi",
-  "(GMT+05:00) Asia/Tashkent",
-  "(GMT+05:30) Asia/Colombo",
-  "(GMT+06:00) Asia/Almaty",
-  "(GMT+06:00) Asia/Dhaka",
-  "(GMT+06:30) Asia/Rangoon",
-  "(GMT+07:00) Asia/Bangkok",
-  "(GMT+07:00) Asia/Jakarta",
-  "(GMT+08:00) Asia/Hong_Kong",
-  "(GMT+08:00) Asia/Kuala_Lumpur",
-  "(GMT+08:00) Asia/Singapore",
-  "(GMT+08:00) Asia/Taipei",
-  "(GMT+08:00) Asia/Ulaanbaatar",
-  "(GMT+09:00) Asia/Seoul",
-  "(GMT+09:00) Asia/Tokyo",
-  "(GMT+10:00) Pacific/Guam",
-  "(GMT+10:00) Pacific/Port_Moresby",
-  "(GMT+11:00) Pacific/Guadalcanal",
-  "(GMT+11:00) Pacific/Noumea",
-  "(GMT+12:00) Pacific/Majuro",
-  "(GMT+13:00) Pacific/Auckland",
-  "(GMT+13:00) Pacific/Fakaofo",
-  "(GMT+13:00) Pacific/Fiji",
-  "(GMT+13:00) Pacific/Tongatapu",
-  "(GMT+14:00) Pacific/Apia"
+  {
+    "locale": "Pacific/Pago_Pago",
+    "lag": "(GMT-11:00)"
+  },
+  {
+    "locale": "Pacific/Honolulu",
+    "lag": "(GMT-10:00)"
+  },
+  {
+    "locale": "America/Los_Angeles",
+    "lag": "(GMT-08:00)"
+  },
+  {
+    "locale": "America/Denver",
+    "lag": "(GMT-07:00)"
+  },
+  {
+    "locale": "America/Chicago",
+    "lag": "(GMT-06:00)"
+  },
+  {
+    "locale": "America/Guatemala",
+    "lag": "(GMT-06:00)"
+  },
+  {
+    "locale": "America/Bogota",
+    "lag": "(GMT-05:00)"
+  },
+  {
+    "locale": "America/New_York",
+    "lag": "(GMT-05:00)"
+  },
+  {
+    "locale": "America/Lima",
+    "lag": "(GMT-05:00)"
+  },
+  {
+    "locale": "America/Caracas",
+    "lag": "(GMT-04:30)"
+  },
+  {
+    "locale": "America/Guyana",
+    "lag": "(GMT-04:00)"
+  },
+  {
+    "locale": "America/La_Paz",
+    "lag": "(GMT-04:00)"
+  },
+  {
+    "locale": "America/Argentina/Buenos_Aires",
+    "lag": "(GMT-03:00)"
+  },
+  {
+    "locale": "America/Godthab",
+    "lag": "(GMT-03:00)"
+  },
+  {
+    "locale": "America/Montevideo",
+    "lag": "(GMT-03:00)"
+  },
+  {
+    "locale": "America/Santiago",
+    "lag": "(GMT-03:00)"
+  },
+  {
+    "locale": "America/Sao_Paulo",
+    "lag": "(GMT-02:00)"
+  },
+  {
+    "locale": "Atlantic/South_Georgia",
+    "lag": "(GMT-02:00)"
+  },
+  {
+    "locale": "Atlantic/Azores",
+    "lag": "(GMT-01:00)"
+  },
+  {
+    "locale": "Atlantic/Cape_Verde",
+    "lag": "(GMT-01:00)"
+  },
+  {
+    "locale": "Africa/Casablanca",
+    "lag": "(GMT+00:00)"
+  },
+  {
+    "locale": "Europe/Dublin",
+    "lag": "(GMT+00:00)"
+  },
+  {
+    "locale": "Europe/Lisbon",
+    "lag": "(GMT+00:00)"
+  },
+  {
+    "locale": "Europe/London",
+    "lag": "(GMT+00:00)"
+  },
+  {
+    "locale": "Africa/Monrovia",
+    "lag": "(GMT+00:00)"
+  },
+  {
+    "locale": "Africa/Algiers",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Amsterdam",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Berlin",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Brussels",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Budapest",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Copenhagen",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Madrid",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Paris",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Rome",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Stockholm",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Vienna",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Warsaw",
+    "lag": "(GMT+01:00)"
+  },
+  {
+    "locale": "Europe/Athens",
+    "lag": "(GMT+02:00)"
+  },
+  {
+    "locale": "Europe/Bucharest",
+    "lag": "(GMT+02:00)"
+  },
+  {
+    "locale": "Africa/Cairo",
+    "lag": "(GMT+02:00)"
+  },
+  {
+    "locale": "Asia/Jerusalem",
+    "lag": "(GMT+02:00)"
+  },
+  {
+    "locale": "Africa/Johannesburg",
+    "lag": "(GMT+02:00)"
+  },
+  {
+    "locale": "Europe/Helsinki",
+    "lag": "(GMT+02:00)"
+  },
+  {
+    "locale": "Europe/Kiev",
+    "lag": "(GMT+02:00)"
+  },
+  {
+    "locale": "Europe/Riga",
+    "lag": "(GMT+02:00)"
+  },
+  {
+    "locale": "Europe/Sofia",
+    "lag": "(GMT+02:00)"
+  },
+  {
+    "locale": "Europe/Tallinn",
+    "lag": "(GMT+02:00)"
+  },
+  {
+    "locale": "Europe/Vilnius",
+    "lag": "(GMT+02:00)"
+  },
+  {
+    "locale": "Europe/Istanbul",
+    "lag": "(GMT+03:00)"
+  },
+  {
+    "locale": "Asia/Baghdad",
+    "lag": "(GMT+03:00)"
+  },
+  {
+    "locale": "Africa/Nairobi",
+    "lag": "(GMT+03:00)"
+  },
+  {
+    "locale": "Europe/Minsk",
+    "lag": "(GMT+03:00)"
+  },
+  {
+    "locale": "Asia/Riyadh",
+    "lag": "(GMT+03:00)"
+  },
+  {
+    "locale": "Asia/Tehran",
+    "lag": "(GMT+03:30)"
+  },
+  {
+    "locale": "Asia/Baku",
+    "lag": "(GMT+04:00)"
+  },
+  {
+    "locale": "Asia/Tbilisi",
+    "lag": "(GMT+04:00)"
+  },
+  {
+    "locale": "Asia/Yerevan",
+    "lag": "(GMT+04:00)"
+  },
+  {
+    "locale": "Asia/Kabul",
+    "lag": "(GMT+04:30)"
+  },
+  {
+    "locale": "Asia/Karachi",
+    "lag": "(GMT+05:00)"
+  },
+  {
+    "locale": "Asia/Tashkent",
+    "lag": "(GMT+05:00)"
+  },
+  {
+    "locale": "Asia/Colombo",
+    "lag": "(GMT+05:30)"
+  },
+  {
+    "locale": "Asia/Almaty",
+    "lag": "(GMT+06:00)"
+  },
+  {
+    "locale": "Asia/Dhaka",
+    "lag": "(GMT+06:00)"
+  },
+  {
+    "locale": "Asia/Rangoon",
+    "lag": "(GMT+06:30)"
+  },
+  {
+    "locale": "Asia/Bangkok",
+    "lag": "(GMT+07:00)"
+  },
+  {
+    "locale": "Asia/Jakarta",
+    "lag": "(GMT+07:00)"
+  },
+  {
+    "locale": "Asia/Hong_Kong",
+    "lag": "(GMT+08:00)"
+  },
+  {
+    "locale": "Asia/Kuala_Lumpur",
+    "lag": "(GMT+08:00)"
+  },
+  {
+    "locale": "Asia/Singapore",
+    "lag": "(GMT+08:00)"
+  },
+  {
+    "locale": "Asia/Taipei",
+    "lag": "(GMT+08:00)"
+  },
+  {
+    "locale": "Asia/Ulaanbaatar",
+    "lag": "(GMT+08:00)"
+  },
+  {
+    "locale": "Asia/Seoul",
+    "lag": "(GMT+09:00)"
+  },
+  {
+    "locale": "Asia/Tokyo",
+    "lag": "(GMT+09:00)"
+  },
+  {
+    "locale": "Pacific/Guam",
+    "lag": "(GMT+10:00)"
+  },
+  {
+    "locale": "Pacific/Port_Moresby",
+    "lag": "(GMT+10:00)"
+  },
+  {
+    "locale": "Pacific/Guadalcanal",
+    "lag": "(GMT+11:00)"
+  },
+  {
+    "locale": "Pacific/Noumea",
+    "lag": "(GMT+11:00)"
+  },
+  {
+    "locale": "Pacific/Majuro",
+    "lag": "(GMT+12:00)"
+  },
+  {
+    "locale": "Pacific/Auckland",
+    "lag": "(GMT+13:00)"
+  },
+  {
+    "locale": "Pacific/Fakaofo",
+    "lag": "(GMT+13:00)"
+  },
+  {
+    "locale": "Pacific/Fiji",
+    "lag": "(GMT+13:00)"
+  },
+  {
+    "locale": "Pacific/Tongatapu",
+    "lag": "(GMT+13:00)"
+  },
+  {
+    "locale": "Pacific/Apia",
+    "lag": "(GMT+14:00)"
+  }
 ]

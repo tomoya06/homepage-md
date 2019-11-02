@@ -8,7 +8,7 @@ import {
 
 import './index.scss';
 
-import moment from 'moment';
+import moment from 'moment-timezone';
 import {
   TimezoneItem, getTimezoneList,
   bindTimezoneListUpdateHandler, unbindTimezoneListUpdateHandler
@@ -35,7 +35,7 @@ export default class Clock extends React.Component<{}, State> {
   componentDidMount() {
     this.timeout = window.setInterval(() => {
       this.updateCurrentTime();
-    }, 10);
+    }, 1000);
 
     bindTimezoneListUpdateHandler(this.updateTimezoneList);
   }
@@ -75,13 +75,13 @@ export default class Clock extends React.Component<{}, State> {
             <div className="desc">LOCAL TIME</div>
           </div>
           {
-            timezoneList.map(({ lag, label }) => (
+            timezoneList.map(({ label, locale, lag }) => (
               <div
                 key={`display-clock-${label}`}
                 className="one-clock"
               >
-                <ReactClock value={currentTime.add(lag, 'h').toDate()} />
-                <div className="desc">{label.split(' ').join('\n')}</div>
+                <ReactClock value={currentTime.tz(locale).toDate()} />
+                <div className="desc">{`${lag}\n${label}`}</div>
               </div>
             ))
           }

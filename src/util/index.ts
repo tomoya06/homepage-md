@@ -40,7 +40,10 @@ export const toggleFullScreen = (event: any) => {
   }
 };
 
-export const getStorage = (key: string) => JSON.parse(localStorage.getItem(key) || '');
+export const getStorage = (key: string) => {
+  const result = localStorage.getItem(key);
+  return result ? JSON.parse(result) : null;
+};
 export const setStorage = (key: string, value: Object) => localStorage.setItem(key, JSON.stringify(value));
 
 export const nothing = () => {};
