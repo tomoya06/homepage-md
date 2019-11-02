@@ -36,7 +36,7 @@ export default class SystemBar extends React.Component<Props, State> {
           <Toolbar variant="dense">
             <Button>START</Button>
             {runningApps.map((app) => (
-              <Button>{app.displayName}</Button>
+              <Button key={`systembar-running_app-${app.pid}`}>{app.displayName}</Button>
             ))}
             <SystemBarClock/>
           </Toolbar>
