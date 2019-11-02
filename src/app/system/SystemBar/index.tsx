@@ -3,6 +3,7 @@ import React from 'react';
 import {
   AppBar, Toolbar,
   Button,
+  Box, Grid
 } from '@material-ui/core'
 
 import SystemBarClock from '../../systembar/Clock';
@@ -29,16 +30,24 @@ export default class SystemBar extends React.Component<Props, State> {
   render() {
     const { store } = this.props;
     const { runningApps } = store;
-    
+
     return (
       <div className="systembar-container">
         <AppBar position="fixed" className="systembar">
           <Toolbar variant="dense">
-            <Button>START</Button>
-            {runningApps.map((app) => (
-              <Button key={`systembar-running_app-${app.pid}`}>{app.displayName}</Button>
-            ))}
-            <SystemBarClock/>
+            <Grid container>
+              <Box>
+                <Button>START</Button>
+              </Box>
+              <Box flexGrow={1}>
+                {runningApps.map((app) => (
+                  <Button key={`systembar-running_app-${app.pid}`}>{app.displayName}</Button>
+                ))}
+              </Box>
+              <Box>
+                <SystemBarClock />
+              </Box>
+            </Grid>
           </Toolbar>
         </AppBar>
         {
