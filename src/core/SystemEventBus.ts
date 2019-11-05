@@ -18,10 +18,12 @@ window.killApp = (pid: number) => { systemEventEmitter.emit('kill', pid); return
 window.sendMessage = (appid: string, message: URLSearchParams | string) => {
   let rMessage: URLSearchParams;
   if (typeof message === 'string') {
+    debugger
     try {
       const tempUrl = new URL(`${APPLINK_PROTOCOL}null?${message}`);
       rMessage = tempUrl.searchParams;
     } catch (error) {
+      console.log(error);
       return;
     }
   } else {
