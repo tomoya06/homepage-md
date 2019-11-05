@@ -13,6 +13,8 @@ import {
 } from '@material-ui/core/styles';
 
 import { Rnd, ResizeEnable } from 'react-rnd';
+import systemEventEmitter from '../../../core/SystemEventbus';
+import { SEND_MESSAGE_PREFIX } from '../../../core/const';
 
 type Props = {
   header: string,
@@ -23,6 +25,7 @@ type Props = {
   height?: string,
   enableResizing?: ResizeEnable,
   classes: any,
+  handleSystemMessage?: (params: URLSearchParams) => any,
 }
 
 const customStyles = {
@@ -35,6 +38,20 @@ class Application extends React.Component<Props, {}> {
   handleCloseApp = () => {
     const { appid } = this.props;
     window.terminateApp(appid);
+  }
+
+  handleReceiveSystemSignal = (sig: URLSearchParams) => {
+    if (this.props.handleSystemMessage) {
+      this.props.handleSystemMessage(sig);
+    }
+  }
+
+  componentDidMount() {
+    systemEventEmitter.on(SEND_MESSAGE_PREFIX(this.props.appid), this.handleReceiveSystemSignal);
+  }
+
+  componentWillUnmount() {
+    systemEventEmitter.off(SEND_MESSAGE_PREFIX(this.props.appid), this.handleReceiveSystemSignal);
   }
 
   render() {
