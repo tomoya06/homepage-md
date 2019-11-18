@@ -42,7 +42,7 @@ export default class Drawer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      tabValue: 0,
+      tabValue: 1,
     }
   }
 
@@ -87,8 +87,8 @@ export default class Drawer extends React.Component<Props, State> {
               centered
               indicatorColor="primary"
             >
-              <Tab icon={<GridOnIcon />}></Tab>
-              <Tab icon={<ListIcon />}></Tab>
+              {/* <Tab icon={<GridOnIcon />}></Tab> */}
+              <Tab icon={<ListIcon />} value={1}></Tab>
             </Tabs>
           </Toolbar>
         </AppBar>
