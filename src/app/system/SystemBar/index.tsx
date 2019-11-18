@@ -2,19 +2,15 @@ import React from 'react';
 
 import {
   AppBar, Toolbar,
-  Fab,
   Button, IconButton,
   Box, Grid,
-  Drawer, Dialog, Slide,
-  GridList, GridListTile, GridListTileBar, Container,
-  Typography,
 } from '@material-ui/core'
-
-import { TransitionProps } from '@material-ui/core/transitions';
 
 import {
   DonutLarge as DonutLargeIcon,
 } from '@material-ui/icons';
+
+import SystemDrawer from '../Drawer';
 
 import SystemBarClock from '../../systembar/Clock';
 
@@ -22,6 +18,7 @@ import { observer } from 'mobx-react';
 
 import './index.scss';
 import { SystemStore } from '../../../core/System';
+import registry from '../../../core/registry';
 
 type State = {
   isDrawerOpen: boolean,
@@ -31,21 +28,10 @@ type Props = {
   store: SystemStore,
 }
 
-
-const Transition = React.forwardRef<unknown, TransitionProps>(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
 @observer
 export default class SystemBar extends React.Component<Props, State> {
   state: Readonly<State> = {
     isDrawerOpen: false,
-  }
-
-  triggerDrawer = (flag: boolean) => {
-    this.setState({
-      isDrawerOpen: flag,
-    })
   }
 
   render() {
@@ -59,7 +45,7 @@ export default class SystemBar extends React.Component<Props, State> {
           <Toolbar variant="dense">
             <Grid container>
               <Box>
-                <IconButton onClick={() => this.triggerDrawer(true)}>
+                <IconButton onClick={() => this.setState({ isDrawerOpen: true})}>
                   <DonutLargeIcon />
                 </IconButton>
               </Box>
@@ -74,28 +60,11 @@ export default class SystemBar extends React.Component<Props, State> {
             </Grid>
           </Toolbar>
         </AppBar>
-        <Dialog
-          fullScreen open={isDrawerOpen}
-          TransitionComponent={Transition}
-          onClose={() => this.triggerDrawer(false)}
-        >
-          <AppBar position="relative">
-            <Toolbar variant="dense">
-              <Fab onClick={() => this.triggerDrawer(false)} className="drawer-fab">
-                <DonutLargeIcon />
-              </Fab>
-            </Toolbar>
-          </AppBar>
-          <Container maxWidth="md">
-            <GridList cellHeight={160} cols={3}>
-              <GridListTile cols={1} rows={1}>
-                <Box height="100%" bgcolor="text.disabled">
-                  <Typography>TEST</Typography>
-                </Box>
-              </GridListTile>
-            </GridList>
-          </Container>
-        </Dialog>
+        <SystemDrawer 
+          isDrawerOpen={isDrawerOpen}
+          updateDrawerOpen={(isDrawerOpen) => this.setState({ isDrawerOpen })}
+          appList={registry}
+        />
       </div>
     )
   }

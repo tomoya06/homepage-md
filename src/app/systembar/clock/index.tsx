@@ -59,7 +59,7 @@ export default class Clock extends React.Component<{}, State> {
   }
 
   handleClickSetting = () => {
-    window.launchApp('system.clocksetting');
+    window.launchApp('tomoya:system.clocksetting');
   }
 
   render() {
