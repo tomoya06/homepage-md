@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core/styles';
 
 import { Rnd, ResizeEnable } from 'react-rnd';
-import systemEventEmitter from '../../../core/SystemEventBus';
+import systemEventEmitter from '../../../core/SystemEventBus2';
 import { SEND_MESSAGE_PREFIX } from '../../../core/const';
 
 type Props = {

@@ -4,7 +4,7 @@ import _ from 'lodash';
 import RunningApp from '../model/RunningApp';
 import App from '../model/App';
 
-import systemEvt from './SystemEventBus';
+import systemEvt from './SystemEventBus2';
 import registry from './registry';
 import { APPLINK_PROTOCOL } from './const';
 
