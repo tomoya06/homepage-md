@@ -2,29 +2,7 @@ const axios = require('axios');
 
 const GITHUB = 'https://api.github.com';
 
-axios.default.interceptors.response.use(
-  response => {
-    if (response.status !== 200) throw new Error(response.status);
-    return response;
-  },
-  error => Promise.reject(error),
-)
-
-export async function requestGithubIdentity() {
-  try {
-    const url = new URL('https://github.com/login/oauth/authorize');
-    const urlParams = new URLSearchParams();
-    urlParams.set('client_id', '3c261a6406bdea085329');
-    urlParams.set('scope', 'read:user');
-    urlParams.set('redirect_uri', 'http://localhost:3000');
-    const finalUrl = `${url}?${urlParams.toString()}`
-    await axios.get(finalUrl);
-  } catch (error) {
-    
-  }
-}
-
-export async function scanAllRepo() {
+async function scanAllRepo() {
   try {
     const allReposResult = await axios.get(GITHUB + '/users/tomoya06/repos');
     const allRepos = allReposResult.data;
@@ -39,11 +17,10 @@ export async function scanAllRepo() {
         const filetreeResult = await axios.get(filetreeUrl);
         const filetree = filetreeResult.data;
         const { tree } = filetree;
-
         debugger;
       } catch (error) {
         debugger
-        return resolve(null); 
+        return resolve(null);
       }
     }))
     await Promise.all(it);
@@ -52,4 +29,4 @@ export async function scanAllRepo() {
   }
 }
 
-scanAllRepo();
+
