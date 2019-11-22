@@ -5,6 +5,8 @@ import { exchangeToken } from "../util/github";
 
 import ClockSetting from '../app/system/ClockSetting';
 
+import { scanAllRepo } from '../worker/ScanGithub';
+
 const registry: App[] = [
   {
     id: 'system.clocksetting',
@@ -15,10 +17,11 @@ const registry: App[] = [
 ]
 
 exchangeToken().then(() => {
-  const scanWorker = new Worker('../worker/ScanGithub.js');
-  scanWorker.onmessage = (ev: MessageEvent) => {
-    const scanResult = ev.data as App[];
-  }
+  scanAllRepo().then((results) => {
+    debugger;
+  }).catch((error) => {
+    debugger;
+  })
 });
 
 export default registry;

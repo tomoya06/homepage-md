@@ -5,8 +5,7 @@
       "es6",
       "dom",
       "dom.iterable",
-      "esnext",
-      "webworker"
+      "esnext"
     ],
     "allowJs": true,
     "experimentalDecorators": true,
